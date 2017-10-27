@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">                
+        <title>Destination</title>
+    </head>
+    <style>
+        .container {
+            text-align: left;
+        }
+        a:first{
+            margin-left: 39%;
+        }
+        a:last{
+            margin-left: 5%;
+        }
+        
+    </style>
+    <body>
+        <div class='container'>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="display-6" href='/travels'>Dashboard</a> | <a class="display-6" href='/logout'>  Logout</a>
+            </nav>
+            <div class="container">
+                <h2 class='display-3'>{{ trip.destination }}</h2>
+                    <p>Planned By: {{ trip.users.first.name }} </p>
+                    <p>Description: {{ trip.description }}</p>
+                    <p>Travel Date From: {{ trip.from_date }}</p>
+                    <p>Travel Date To: {{ trip.to_date }}</p>
+
+            
+                <h2 class='display-4'>Other users' joining the trip:</h2>
+                    <ul>
+                        {% for attendent in notMe %}
+                            <li>{{ attendent.name }}</li>
+                        {% endfor %}
+                    </ul>
+
+            </div>
+            
+        </div>
+        
+        
+    </body>
+</html>

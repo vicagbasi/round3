@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">    <title>What's Up</title>
+    </head>
+    <style>
+        container{margin-bottom: 5%;}
+    </style>
+
+    <body>
+        <div class='container'>  
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                        <h1 class='display-3' >Hello, {{ user.name }}! </h1>
+                        <a class="navbar-brand" href='/logout'>Logout</a>
+                </div>
+            </nav>
+            
+            <div class='container'>
+                <br><br><br>    
+                <h3>Your Trip Schedule:</h3>
+                <table class='table table-hover'>
+                    <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Travel Start Date</th>
+                        <th scope="col">Travel End Start</th>
+                        <th scope="col">Plan</th>
+                    </tr>
+
+                    {% for travel in my_trips %}
+                    
+                    <tr>
+                        <td><a href='destination/{{ travel.id }}'>{{ travel.destination }}</a></td>
+                        <td>{{ travel.from_date }}</td>
+                        <td>{{ travel.to_date }}</td>
+                        <td>{{ travel.description }}</td>
+
+                    </tr>
+                    {% endfor %} 
+                </table>
+            </div>
+
+            <div class='container'>
+                <br><br><br>    
+                <h3>Other User's Travel Plans:</h3>
+                <table class='table table-hover'>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Travel Start Date</th>
+                        <th scope="col">Travel End Start</th>
+                        <th scope="col">Do You Want to Join?</th>
+                    </tr>
+
+                    {% for travel in trips %}
+                    
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td><a href='destination/{{ travel.id }}' >{{ travel.destination }}</a></td>
+                        <td>{{ travel.from_date }}</td>
+                        <td>{{ travel.to_date }}</td>
+                        <td><a href="join/{{ travel.id }}">Join</a></td>
+                    </tr>
+                    {% endfor %} 
+                </table>
+            </div>
+            <br><br><br> 
+            <p><a href="{% url 'travels:create' %}">Add Travel Plans</a></p>
+        </div> 
+       
+        
+        
+        
+    </body>
+</html>

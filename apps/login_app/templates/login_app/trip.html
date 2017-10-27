@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">        
+        <title>Update Appointment</title>
+    </head>
+    <style>
+        .container {
+            text-align: left;
+        }
+        a:first{
+            margin-left: 39%;
+        }
+        a:last{
+            margin-left: 5%;
+        }
+        
+    </style>
+    <body>
+        <div class='container'>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="display-6" href='/travels'>Dashboard</a> | <a class="display-6" href='/logout'>  Logout</a>
+                </nav>
+                <div class='container center'>
+                    <table>
+                        <form action='/travels/add/' method='POST'>
+                        {% csrf_token %}
+                            <h1 class='display-3'>Add a Trip</h1>
+                            <p></p>
+                            <tr> 
+                                <th><label for='destination'>Destination:</label></th>
+                                <th><input type="text" id='destination' name='destination'></th>
+                            </tr>
+                            <tr> 
+                                <th><label for='description'>Description:</label></th>
+                                <th><input type="text" id='description' name='description'></th>
+        
+                            </tr>
+                            <tr> 
+                                <th><label for='to_date'>Travel Date From:</label></th>
+                                <th><input type="date" id='from_date' name='from_date'></th>
+                            </tr>
+                            <tr> 
+                                <th><label for='time'>Travel Date To:</label></th>
+                                <th><input type="date" id='to_date' name='to_date'></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th><input type='submit' value='Add'></th>
+                            </tr>
+                        </form>
+                    </table>
+                </div>
+                
+            </div>
+
+            
+            <div class='container'>
+                {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        
+    </body>
+</html>
